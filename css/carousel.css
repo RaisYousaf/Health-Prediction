@@ -58,8 +58,15 @@ body {
   left: 0;
   min-width: 100%;
   height: 500px;
+  image-rendering: auto;
+  /*image-rendering: crisp-edges;*/
 }
 
+img {
+  image-rendering: auto;
+ /* image-rendering: crisp-edges;
+  image-rendering: pixelated;*/
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */

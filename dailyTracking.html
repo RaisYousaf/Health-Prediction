@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <title>Daily Tracking</title>
-  <link rel="import" href="/path/to/imports/stuff.html">
   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +14,7 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" />
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -28,6 +28,7 @@
     <script> 
     $(function(){
       $("#includedContent").load("carousel.html"); 
+      $("#footer").load("footer.html"); 
     });
     </script>
     <!-- Custom styles for this template -->
@@ -35,12 +36,13 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
 </head>
 <body>
-<div id="includedContent"></div>
+  <div id="includedContent"></div>
     <div class="container">
       <div class="row">
-        <form class="form-horizontal" action="dailyTracking.php" method="post">
+        <form class="form-horizontal" action="dailyInput.php" method="post">
           <fieldset>
             <div class="container">
             <!-- Form Name -->
@@ -48,6 +50,12 @@
               <div class="panel panel-default">
                 <div class="panel-heading"><h3>Daily Goals</h3></div>
                 <div class="panel-body">
+                  <div class="form-group">  
+                     <label class="col-md-4 control-label" for="date">Date</label>     
+                     <div class="col-md-5">                  
+                          <input type="text" name="date" class="datepicker"/>
+                      </div>
+                    </div>
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="bloodGlucose">Blood Glucose</label>  
                     <div class="col-md-5">
@@ -56,32 +64,46 @@
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="Desired Waist">Blood Pressure</label>  
+                    <label class="col-md-4 control-label" for="SbloodPressure">Systolic Blood Pressure</label>  
                     <div class="col-md-5">
-                      <input id="Current Fleet Size" name="DesiredWaist" type="text" placeholder="approximate" class="form-control input-md">
+                      <input id="Current Fleet Size" name="SbloodPressure" type="text" placeholder="approximate" class="form-control input-md">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="Desired Waist">Excercise minutes</label>  
+                    <label class="col-md-4 control-label" for="DbloodPressure">Diastolic Blood Pressure</label>  
                     <div class="col-md-5">
-                      <input id="Current Fleet Size" name="DesiredWaist" type="text" placeholder="approximate" class="form-control input-md">
+                      <input id="Current Fleet Size" name="DbloodPressure" type="text" placeholder="approximate" class="form-control input-md">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="Desired Waist">Steps</label>  
+                    <label class="col-md-4 control-label" for="excercise">Exercise minutes</label>  
                     <div class="col-md-5">
-                      <input id="Current Fleet Size" name="DesiredWaist" type="text" placeholder="approximate" class="form-control input-md">
+                      <input id="Current Fleet Size" name="excercise" type="text" placeholder="approximate" class="form-control input-md">
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="Desired Waist">Weight</label>  
+                    <label class="col-md-4 control-label" for="steps">Steps</label>  
                     <div class="col-md-5">
-                      <input id="Current Fleet Size" name="DesiredWaist" type="text" placeholder="approximate" class="form-control input-md">
+                      <input id="Current Fleet Size" name="steps" type="text" placeholder="approximate" class="form-control input-md">
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="weight">Weight</label>  
+                    <div class="col-md-5">
+                      <input id="Current Fleet Size" name="weight" type="text" placeholder="approximate" class="form-control input-md">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                      <label class="col-md-4 control-label" for="notes">Notes</label>  
+                      <div class="col-md-5">
+                        <textarea class="form-control" name="notes" rows="5"></textarea>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -97,6 +119,18 @@
         </form>
       </div>
     </div>
+    <div id="footer"></div> 
+    <script>
+      $('.datepicker').datepicker({
+        format:"yyyy-mm-dd"
+      });
+      $(function() {
+        $(".datepicker" ).datepicker({ minDate: -100, maxDate: "+0D" });
+        $(".datepicker").datepicker("setDate",new Date());
+        $(".datepicker" ).datepicker( "option", "dateFormat", "yyyy-mm-dd");
+      });
+      console.log($('.datepicker').val());
+    </script>
   </body>
 </html>
 

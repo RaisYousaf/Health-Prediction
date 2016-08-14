@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+
+    <title>Symptoms</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" />
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+     <script> 
+    $(function(){
+      $("#includedContent").load("carousel.html"); 
+      $("#footer").load("footer.html"); 
+    });
+    </script>
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/canvasjs.min.js"></script>
+    <script src="js/jquery.canvasjs.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailyGlucose.php", function (result) {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                  animationEnabled: true,
+                  title:{text: "Blood Glucose levels"},
+                  data: [
+                      { 
+                        color: "red",
+                        type: "spline", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        legendText: "Blood Glucose",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailyWeight.php", function (result) {
+                var chart = new CanvasJS.Chart("weightContainer", {
+                  animationEnabled: true,
+                  title:{text: "Daily Weight"},
+                  data: [
+                      { 
+                        type: "stepLine", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        legendText: "Weight",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailyExcercise.php", function (result) {
+                var chart = new CanvasJS.Chart("excerciseContainer", {
+                  animationEnabled: true,
+                  title:{text: "Daily Exercise"},
+                  data: [
+                      {
+                        color: "green", 
+                        type: "spline", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        legendText: "Exercise in Minutes",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailySteps.php", function (result) {
+                var chart = new CanvasJS.Chart("stepsContainer", {
+                  animationEnabled: true,
+                  title:{text: "Daily Steps"},
+                  data: [
+                      { 
+                        type: "column", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        legendText: "Daily Steps",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailySystolic.php", function (result) {
+                var chart = new CanvasJS.Chart("systolicContainer", {
+                  animationEnabled: true,
+                  title:{text: "Daily Systolic Blood Pressure"},
+                  data: [
+                      { 
+                        color:"orange",
+                        type: "line", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        legendText: "Systolic Blood Pressure",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailyDystolic.php", function (result) {
+                var chart = new CanvasJS.Chart("dystolicContainer", {
+                  animationEnabled: true,
+                  title:{text: "Daily Diastolic Blood Pressure"},
+                  data: [
+                      { 
+                        color:"purple",
+                        type: "line", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        legendText: "Diastolic Blood Pressure",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.getJSON("dailyBloodPressure.php", function (result) {
+                var chart = new CanvasJS.Chart("bloodPressureContainer", {
+                  animationEnabled: true,
+                  title:{text: "Daily Blood Pressure"},
+                  data: [
+                      { 
+                        type: "rangeColumn", //change type to spline, bar, line, area, pie, etc
+                        showInLegend: true,  
+                        bevelEnabled: true,
+                        legendText: "Blood Pressure",
+                        dataPoints: result
+                      }
+                  ]
+                });
+                chart.render();
+            });
+        });
+    </script>
+</head>
+<body>
+  <div id="includedContent"></div>
+    <div class="row">
+      <div class="col-md-6" id="chartContainer" style="width: 600px; height: 280px;"></div>
+      <div class="col-md-6" id="weightContainer" style="width: 600px; height: 280px;"></div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-6" id="excerciseContainer" style="width: 600px; height: 280px;"></div>
+      <div class="col-md-6" id="stepsContainer" style="width: 600px; height: 280px;"></div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-6" id="systolicContainer" style="width: 600px; height: 280px;"></div>
+      <div class="col-md-6" id="dystolicContainer" style="width: 600px; height: 280px;"></div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-md-6" id="bloodPressureContainer" style="width: 600px; height: 280px;"></div>
+    </div>
+    <br/>
+    <div id="footer"></div> 
+</body>
+</html>
