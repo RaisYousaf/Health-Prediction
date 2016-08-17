@@ -35,9 +35,8 @@ if ($conn->connect_error) {
 $sql = "INSERT INTO obesity (userId, CurrentWeight, DesiredWeight,SDweight, EDweight, CurrentBMI, DesiredBMI, SDBmi, EDBmi, CurrentWaist, DesiredWaist, SDWaist, EDWaist)
 VALUES ($UserId, $currentWeight, $desiredWeight, '$SDWeight', '$EDWeight', $currentBMI, $desiredBMI, '$SDBmi', '$EDBmi', $currentWaist, $desiredWaist,'$SDWaist', '$EDWaist')";
 
-echo $sql;
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+    header('Location:obesity.html');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
